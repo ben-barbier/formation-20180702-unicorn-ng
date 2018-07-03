@@ -1,0 +1,27 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>{{ unicorn.name }}</mat-card-title>
+        <mat-card-subtitle>Id: {{ unicorn.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="unicorn.photo">
+    <mat-card-content>
+        <div [ngClass]="{'young': isYoung}">{{ unicorn.birthyear }}</div>
+        <div>{{ unicorn.weight }}</div>
+        <div>{{ unicorn.hobbies }}</div>
+        <div>{{ unicorn.capacities }}</div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-fab color="primary">
+            <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-fab color="primary">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-fab color="primary">
+            <mat-icon>favorite_bord</mat-icon>
+        </button>
+        <button mat-fab color="warn" (click)="delete()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

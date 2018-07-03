@@ -1,0 +1,7 @@
+<uni-unicorn-card
+    *ngFor="let unicorn of unicorns"
+    [unicorn]="unicorn"
+    (deleted)="deleteUnicorn(unicorn)">
+</uni-unicorn-card>
+
+<uni-add-unicorn-button></uni-add-unicorn-button>

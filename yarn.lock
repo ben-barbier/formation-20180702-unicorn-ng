@@ -157,6 +157,12 @@
   version "6.0.7"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-6.0.7.tgz#047dcd762be8a6c24e7309905e468ca82bcf91ec"
 
+"@angular/material@6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-6.3.1.tgz#d1da2bc6d20a710a9affc36132e872206e67d698"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/platform-browser-dynamic@^6.0.3":
   version "6.0.7"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-6.0.7.tgz#1c5f63f62eef1ca564e4db62f8e8419f402f044b"
@@ -5951,7 +5957,7 @@ tsickle@^0.29.0:
     source-map "^0.6.0"
     source-map-support "^0.5.0"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
 

@@ -1,0 +1,19 @@
+:host {
+    padding: 10px;
+    margin: 10px;
+}
+
+.young {
+    color: deeppink;
+    font-weight: bold;
+    &::after, &::before {
+        content: '*';
+    }
+}
+
+mat-card-actions {
+    text-align: right;
+    button {
+        margin-left: 10px;
+    }
+}
