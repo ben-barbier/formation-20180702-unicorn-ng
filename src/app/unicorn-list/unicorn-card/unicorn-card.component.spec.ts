@@ -12,7 +12,7 @@ describe('UnicornCardComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [UnicornCardComponent],
+            declarations: [UnicornCardComponent, TestHostComponent],
             // Tells the compiler not to error on unknown elements and attributes
             schemas: [NO_ERRORS_SCHEMA], // OU CA OU IMPORTER
         }).compileComponents();
@@ -22,27 +22,51 @@ describe('UnicornCardComponent', () => {
         fixture = TestBed.createComponent(TestHostComponent);
         hostComponent = fixture.componentInstance;
         hostComponent.unicorn = {id: 1} as Unicorn;
-        component = queryCssSelector(fixture, 'app-unicorn-card').componentInstance;
+        component = queryCssSelector(fixture, 'uni-unicorn-card').componentInstance;
         fixture.detectChanges();
     });
 
     it('should create', () => {
-        debugger;
         expect(component).toBeTruthy();
     });
 
     it('shoud have unicorn as Input', () => {
         // When
-        const card: UnicornCardComponent = queryCssSelector(fixture, 'app-unicorn-card').componentInstance;
+        const card: UnicornCardComponent = queryCssSelector(fixture, 'uni-unicorn-card').componentInstance;
 
         // Then
         expect(card.unicorn).toBe(hostComponent.unicorn);
     });
+
+    it('should set isYoung property at true on init', () => {
+        // Given
+        const unicorn: Unicorn = {id: 1, birthyear: new Date().getFullYear()} as Unicorn;
+        hostComponent.unicorn = unicorn;
+
+        // When
+        fixture.detectChanges();
+
+        // Then
+        expect(component.isYoung).toBeTruthy();
+    });
+
+    it('should set isYoung property at false on init', () => {
+        // Given
+        const unicorn: Unicorn = {id: 1, birthyear: new Date().getFullYear() - 1} as Unicorn;
+        hostComponent.unicorn = unicorn;
+
+        // When
+        fixture.detectChanges();
+
+        // Then
+        expect(component.isYoung).toBeFalsy();
+    });
+
 });
 
 @Component({
     template: `
-        <app-unicorn-card [unicorn]="unicorn" (deleted)="deleteFromList($event)"></app-unicorn-card>`
+        <uni-unicorn-card [unicorn]="unicorn" (deleted)="deleteFromList($event)"></uni-unicorn-card>`
 })
 class TestHostComponent {
     unicorn: Unicorn;
@@ -51,7 +75,6 @@ class TestHostComponent {
 }
 
 export function queryCssSelector(fixture: ComponentFixture<any>, selector: string): DebugElement {
-    debugger;
     if (!fixture) {
         return null;
     }

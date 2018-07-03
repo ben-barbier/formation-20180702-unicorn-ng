@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Unicorn} from '../../models/unicorn.model';
 
 @Component({
@@ -6,7 +6,7 @@ import {Unicorn} from '../../models/unicorn.model';
     templateUrl: './unicorn-card.component.html',
     styleUrls: ['./unicorn-card.component.scss']
 })
-export class UnicornCardComponent implements OnInit {
+export class UnicornCardComponent implements OnInit, OnChanges {
 
     @Input()
     public unicorn: Unicorn;
@@ -20,11 +20,15 @@ export class UnicornCardComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.isYoung = this.unicorn.birthyear === new Date().getFullYear();
+        // this.isYoung = this.unicorn.birthyear === new Date().getFullYear();
     }
 
     public delete() {
         this.deleted.emit();
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        this.isYoung = this.unicorn.birthyear === new Date().getFullYear();
     }
 
 }

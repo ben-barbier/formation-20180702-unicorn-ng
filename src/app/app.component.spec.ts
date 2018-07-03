@@ -3,6 +3,8 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 import {UnicornListComponent} from './unicorn-list/unicorn-list.component';
 import {UnicornCardComponent} from './unicorn-list/unicorn-card/unicorn-card.component';
+import {AddUnicornButtonComponent} from './unicorn-list/add-unicorn-button/add-unicorn-button.component';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -14,6 +16,9 @@ describe('AppComponent', () => {
                 AppComponent,
                 UnicornListComponent,
                 UnicornCardComponent,
+            ],
+            schemas: [
+                NO_ERRORS_SCHEMA
             ],
         }).compileComponents();
     }));
