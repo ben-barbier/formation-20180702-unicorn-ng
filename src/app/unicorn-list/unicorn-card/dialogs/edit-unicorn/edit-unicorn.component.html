@@ -1,0 +1,10 @@
+<form (ngSubmit)="save()" #unicornForm="ngForm">
+    <div>Id: {{ unicorn.id }}</div>
+    <div>
+        <mat-form-field>
+            <input matInput placeholder="Name" required [(ngModel)]="unicorn.name" name="name">
+        </mat-form-field>
+    </div>
+    <button type="button" mat-raised-button mat-dialog-close>Annuler</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="unicornForm.invalid">Modifier</button>
+</form>

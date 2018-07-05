@@ -1,6 +1,7 @@
 :host {
     padding: 10px;
     margin: 10px;
+    max-width: 320px;
 }
 
 .young {
@@ -16,4 +17,8 @@ mat-card-actions {
     button {
         margin-left: 10px;
     }
+}
+
+.in-cart {
+    color: hotpink;
 }

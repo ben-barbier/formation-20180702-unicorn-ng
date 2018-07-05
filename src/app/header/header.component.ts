@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {Unicorn} from '../models/unicorn.model';
+import {Observable} from 'rxjs';
+import {CartService} from '../shared/services/cart.service';
 
 @Component({
-  selector: 'uni-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'uni-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+    public cart: Observable<Unicorn[]> = this.cartService.cart;
 
-  ngOnInit() {
-  }
+    constructor(private cartService: CartService) {
+    }
 
 }

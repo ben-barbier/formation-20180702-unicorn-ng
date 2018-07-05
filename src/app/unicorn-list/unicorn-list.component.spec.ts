@@ -1,8 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {UnicornListComponent} from './unicorn-list.component';
-import {UnicornCardComponent} from './unicorn-card/unicorn-card.component';
-import {AddUnicornButtonComponent} from './add-unicorn-button/add-unicorn-button.component';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {Unicorn} from '../models/unicorn.model';
 import {By} from '@angular/platform-browser';

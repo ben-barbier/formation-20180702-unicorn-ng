@@ -2,7 +2,7 @@
 
 <uni-unicorn-list
     (click)="logIt($event)"
-    [unicorns]="unicorns">
+    [unicorns]="(unicorns | async)">
 </uni-unicorn-list>
 
 
