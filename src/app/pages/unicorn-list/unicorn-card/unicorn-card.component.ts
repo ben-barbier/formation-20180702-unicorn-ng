@@ -6,7 +6,7 @@ import {EditUnicornComponent} from './dialogs/edit-unicorn/edit-unicorn.componen
 import * as _ from 'lodash';
 import {CartService} from '../../../shared/services/cart.service';
 import {UnicornService} from '../../../shared/services/unicorn.service';
-import {filter, map, mergeMap, tap} from 'rxjs/operators';
+import {filter, first, map, mergeMap, tap} from 'rxjs/operators';
 
 @Component({
     selector: 'uni-unicorn-card',
@@ -31,6 +31,16 @@ export class UnicornCardComponent implements OnChanges {
                 private cartService: CartService,
                 private unicornService: UnicornService,
                 private snackBar: MatSnackBar) {
+
+        // TODO: a mettre lors de l'effect success
+        this.unicornService.unicorns.pipe(
+            // filter((unicorn: Unicorn) => unicorn.id === this.unicorn.id),
+            // first()
+        ).subscribe((unicorn: Unicorn[]) => {
+            debugger;
+            // this.unicorn = unicorn;
+        });
+
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -67,8 +77,7 @@ export class UnicornCardComponent implements OnChanges {
                     delete unicorn.capacitiesObj;
                     return unicorn;
                 }),
-                mergeMap((updatedUnicorn) => this.unicornService.update(updatedUnicorn)),
-                tap((updatedUnicorn) => this.unicorn = updatedUnicorn),
+                tap((updatedUnicorn) => this.unicornService.update(updatedUnicorn)),
             )
             .subscribe();
     }

@@ -8,8 +8,13 @@ import {UnicornResolver} from './pages/unicorn/unicorn.resolver';
 
 const routes: Routes = [
     {path: '', component: HomeComponent}, // path: '/'
-    {path: 'unicorns', component: UnicornListComponent},
     {
+        path: 'unicorns',
+        component: UnicornListComponent,
+        resolve: {
+            unicorns: UnicornsResolver
+        }
+    }, {
         path: 'unicorns/:id',
         component: UnicornComponent,
         canActivate: [AgeGuard],
