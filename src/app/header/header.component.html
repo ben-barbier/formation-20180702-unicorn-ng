@@ -1,6 +1,8 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
         <span>Unicorn</span>
+        <span><button mat-button [routerLink]="['']"><mat-icon>home</mat-icon></button></span>
+        <span><button mat-button [routerLink]="['unicorns']"><mat-icon>list</mat-icon></button></span>
         <span class="spacer"></span>
         <mat-icon [matBadge]="(cart | async).length" matBadgeColor="warn">favorite</mat-icon>
     </mat-toolbar-row>

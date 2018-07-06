@@ -2,19 +2,25 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {UnicornListComponent} from './unicorn-list/unicorn-list.component';
-import {UnicornCardComponent} from './unicorn-list/unicorn-card/unicorn-card.component';
-import {MatBadgeModule, MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatToolbarModule} from '@angular/material';
+import {
+    MatBadgeModule, MatButtonModule, MatCardModule, MatDialogModule,
+    MatFormFieldModule, MatIconModule, MatInputModule, MatSnackBarModule,
+    MatToolbarModule
+} from '@angular/material';
 import {HeaderComponent} from './header/header.component';
-import {AddUnicornButtonComponent} from './unicorn-list/add-unicorn-button/add-unicorn-button.component';
 import {AwesomePipe} from './shared/pipes/awesome.pipe';
 import {HttpClientModule} from '@angular/common/http';
-import {EditUnicornComponent} from './unicorn-list/unicorn-card/dialogs/edit-unicorn/edit-unicorn.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
 import {cartReducer} from './store/reducers/cart.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {HomeComponent} from './pages/home/home.component';
+import {UnicornListComponent} from './pages/unicorn-list/unicorn-list.component';
+import {UnicornCardComponent} from './pages/unicorn-list/unicorn-card/unicorn-card.component';
+import {AddUnicornButtonComponent} from './pages/unicorn-list/add-unicorn-button/add-unicorn-button.component';
+import {EditUnicornComponent} from './pages/unicorn-list/unicorn-card/dialogs/edit-unicorn/edit-unicorn.component';
+import {UnicornComponent} from './pages/unicorn/unicorn.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +30,9 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
         HeaderComponent,
         AddUnicornButtonComponent,
         AwesomePipe,
-        EditUnicornComponent
+        EditUnicornComponent,
+        HomeComponent,
+        UnicornComponent
     ],
     imports: [
         BrowserModule,
@@ -37,6 +45,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
         MatFormFieldModule,
         MatInputModule,
         MatBadgeModule,
+        MatSnackBarModule,
         HttpClientModule,
         FormsModule,
         BrowserAnimationsModule,

@@ -1,8 +1,15 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {UnicornListComponent} from './unicorn-list.component';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
-import {Unicorn} from '../models/unicorn.model';
+import {Unicorn} from '../../models/unicorn.model';
 import {By} from '@angular/platform-browser';
+
+@Component({
+    template: '<uni-unicorn-list [unicorns]="unicorns"></uni-unicorn-list>'
+})
+class TestHostComponent {
+    unicorns: Unicorn[];
+}
 
 describe('UnicornListComponent', () => {
     let hostComponent: TestHostComponent;
@@ -50,13 +57,6 @@ describe('UnicornListComponent', () => {
     });
 
 });
-
-@Component({
-    template: '<uni-unicorn-list [unicorns]="unicorns"></uni-unicorn-list>'
-})
-class TestHostComponent {
-    unicorns: Unicorn[];
-}
 
 export function queryCssSelector(fixture: ComponentFixture<any>, selector: string): DebugElement {
     if (!fixture) {

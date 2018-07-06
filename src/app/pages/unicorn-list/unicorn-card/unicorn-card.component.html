@@ -11,7 +11,7 @@
         <div>{{ unicorn.capacities }}</div>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-fab color="primary">
+        <button mat-fab color="primary" [routerLink]="['/unicorns', unicorn.id]">
             <mat-icon>visibility</mat-icon>
         </button>
         <button mat-fab color="primary" (click)="edit()">

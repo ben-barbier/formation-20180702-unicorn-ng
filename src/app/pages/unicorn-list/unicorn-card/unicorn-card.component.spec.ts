@@ -2,8 +2,18 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {UnicornCardComponent} from './unicorn-card.component';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
-import {Unicorn} from '../../models/unicorn.model';
+import {Unicorn} from '../../../models/unicorn.model';
 import {By} from '@angular/platform-browser';
+
+@Component({
+    template: `
+        <uni-unicorn-card [unicorn]="unicorn" (deleted)="deleteFromList($event)"></uni-unicorn-card>`
+})
+class TestHostComponent {
+    unicorn: Unicorn;
+    deleteFromList = (unicorn: Unicorn) => {
+    }
+}
 
 describe('UnicornCardComponent', () => {
     let hostComponent: TestHostComponent;
@@ -63,16 +73,6 @@ describe('UnicornCardComponent', () => {
     });
 
 });
-
-@Component({
-    template: `
-        <uni-unicorn-card [unicorn]="unicorn" (deleted)="deleteFromList($event)"></uni-unicorn-card>`
-})
-class TestHostComponent {
-    unicorn: Unicorn;
-    deleteFromList = (unicorn: Unicorn) => {
-    };
-}
 
 export function queryCssSelector(fixture: ComponentFixture<any>, selector: string): DebugElement {
     if (!fixture) {
