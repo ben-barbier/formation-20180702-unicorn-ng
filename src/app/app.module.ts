@@ -21,6 +21,9 @@ import {UnicornCardComponent} from './pages/unicorn-list/unicorn-card/unicorn-ca
 import {AddUnicornButtonComponent} from './pages/unicorn-list/add-unicorn-button/add-unicorn-button.component';
 import {EditUnicornComponent} from './pages/unicorn-list/unicorn-card/dialogs/edit-unicorn/edit-unicorn.component';
 import {UnicornComponent} from './pages/unicorn/unicorn.component';
+import {unicornsReducer} from './store/reducers/unicorns.reducer';
+import {EffectsModule} from '@ngrx/effects';
+import {UnicornsEffects} from './store/effects/unicorns.effects';
 
 @NgModule({
     declarations: [
@@ -50,8 +53,12 @@ import {UnicornComponent} from './pages/unicorn/unicorn.component';
         FormsModule,
         BrowserAnimationsModule,
         StoreModule.forRoot({
+            unicorns: unicornsReducer,
             cart: cartReducer,
         }),
+        [EffectsModule.forRoot([
+            UnicornsEffects
+        ])],
         StoreDevtoolsModule.instrument({
             maxAge: 10
         }),

@@ -4,13 +4,19 @@ import {HttpClient} from '@angular/common/http';
 import {from, Observable} from 'rxjs';
 import {flatMap, map, mergeMap, toArray} from 'rxjs/operators';
 import {Capacity} from '../../models/capacity.model';
+import {Observable} from 'rxjs';
+import {flatMap, map, toArray} from 'rxjs/operators';
+import {AppState} from '../../store/app.state';
+import {Store} from '@ngrx/store';
+import {UpdateUnicorn} from '../../store/actions/unicorn.actions';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UnicornService {
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+                private store: Store<AppState>) {
     }
 
     public getAll(): Observable<Unicorn[]> {
@@ -42,4 +48,9 @@ export class UnicornService {
     public get(unicornId: number): Observable<Unicorn> {
         return this.http.get<Unicorn>(`http://localhost:3000/unicorns/${unicornId}`);
     }
+    public update(unicorn: Unicorn): Observable<Unicorn> {
+        return this.store.dispatch(new UpdateUnicorn(unicorn));
+        return this.http.put<Unicorn>(`http://localhost:3000/unicorns/${unicorn.id}`, unicorn);
+    }
+
 }
